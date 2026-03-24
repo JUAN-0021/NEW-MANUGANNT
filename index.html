@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Talleres | STF GROUP</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CONTENEDOR DE LOGIN Y REGISTRO -->
+    <div class="container" id="login-container">
+        
+        <!-- Formulario de Registro (Sign Up) -->
+        <div class="form-container sign-up-container">
+            <form id="form-register">
+                <h1 class="no-margin">Crear Cuenta</h1>
+                <span class="sub-text">Registro interno de colaboradores</span>
+                <input type="text" id="regNombre" placeholder="Nombre Completo" required />
+                <input type="text" id="regCargo" placeholder="Cargo Actual" required />
+                <input type="email" id="regEmail" placeholder="Correo Corporativo" required />
+                <input type="password" id="regPass" placeholder="Contraseña" required />
+                <!-- ID corregido a btnRegistrar para coincidir con JS -->
+                <button type="button" id="btnRegistrar">REGISTRAR</button>
+            </form>
+        </div>
+
+        <!-- Formulario de Login (Sign In) -->
+        <div class="form-container sign-in-container">
+            <form id="form-login">
+                <img src="https://www.cmsoftlutions.com/wp-content/uploads/2021/03/44.-STFGroup.jpg" alt="STF Logo" class="mini-logo">
+                <h1 class="no-margin">STF GROUP</h1>
+                <p class="sub-text">Gestión de Talleres</p>
+                <input type="email" id="loginEmail" placeholder="Usuario / Email" required />
+                <input type="password" id="loginPass" placeholder="Contraseña" required />
+                <a href="#" class="forgot-pass" style="font-size: 12px; margin-bottom: 10px; color: #64748b; text-decoration: none;">¿Olvidaste tu contraseña?</a>
+                <button type="button" id="btnIngresar">ENTRAR</button>
+            </form>
+        </div>
+
+        <!-- Paneles Deslizantes (Overlay) -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1 class="text-white no-margin">¿Ya tienes cuenta?</h1>
+                    <p class="text-white sub-text">Inicia sesión para acceder al panel.</p>
+                    <button class="ghost" id="signIn">Ir al Login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1 class="text-white no-margin">BIENVENIDO</h1>
+                    <p class="text-white sub-text">Optimización de procesos STF.</p>
+                    <button class="ghost" id="signUp">Nuevo Usuario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD ERP (Oculto inicialmente) -->
+    <div id="erp-dashboard" class="erp-wrapper" style="display: none;">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <h2 style="color: white; font-size: 20px; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">STF GROUP</h2>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li id="nav-inicio" class="active" onclick="cambiarModulo('inicio')">🏠 Inicio</li>
+                    <li id="nav-menu-ops" onclick="cambiarModulo('menu-ops')">📦 Ordenes de Producción</li>
+                    <li id="nav-menu-tableros" onclick="cambiarModulo('menu-tableros')">📊 Visualización Tablero</li>
+                    <li id="nav-menu-registro" onclick="cambiarModulo('menu-registro')">⚙️ Configuración</li>
+                    
+                    <!-- Acceso exclusivo Super Admin -->
+                    <li id="nav-menu-admin" onclick="cambiarModulo('menu-admin')" style="display: none; background: #b91c1c !important; color: white !important; margin-top: 20px;">🔑 Administrador</li>
+                    
+                    <li class="logout-link" onclick="location.reload()" style="cursor: pointer;">🔒 Cerrar Sesión</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content" style="width: 100%; overflow: hidden;">
+            <header class="top-bar">
+                <h3 id="module-title">Panel Administrativo</h3>
+                <div class="user-info-header">
+                    <strong id="header-user-name" style="color: var(--primary);">Usuario STF</strong>
+                </div>
+            </header>
+            
+            <section id="content-area" class="content-area">
+                <!-- El contenido se genera dinámicamente vía JS -->
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
